@@ -114,10 +114,13 @@ const Home = () => {
         <Row className="my-4">
           <Col md={12}>
             {global && (
-              <Card>
+              <Card className="text-center">
                 <Card.Body>
                   <Card.Title>Kasus Covid Global</Card.Title>
-                  <Card.Text>
+                  <Card.Text
+                    style={{ height: "500px" }}
+                    className="overflow-auto"
+                  >
                     <Table striped bordered hover>
                       <thead>
                         <tr>
@@ -134,7 +137,7 @@ const Home = () => {
                             <td>{index + 1}</td>
                             <td>{item.attributes.Country_Region}</td>
                             <td>{item.attributes.Confirmed}</td>
-                            <td>{item.attributes.Recovered}</td>
+                            <td>{item.attributes.Recovered > 0 ? item.attributes.Recovered : 0}</td>
                             <td>{item.attributes.Deaths}</td>
                           </tr>
                         ))}
