@@ -85,7 +85,7 @@ const Indonesia = () => {
             {provinsi && (
               <Card className="text-center">
                 <Card.Body>
-                  <Card.Title>Kasus Covid Global</Card.Title>
+                  <Card.Title>Kasus Covid Indonesia Berdasarkan Provinsi</Card.Title>
                   <Card.Text
                     style={{ height: "500px" }}
                     className="overflow-auto"
