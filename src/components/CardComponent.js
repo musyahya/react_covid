@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 
 const CardComponent = (props) => {
 
-    console.log(props);
+    // console.log(props);
 
     return (
       <Card bg={props.bg} text={props.text} className="shadow text-center">

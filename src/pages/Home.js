@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Container, Row, Table } from 'react-bootstrap';
 import CardComponent from '../components/CardComponent';
 
 const Home = () => {
@@ -8,6 +8,7 @@ const Home = () => {
     const [positif, setPostif] = useState()
     const [sembuh, setSembuh] = useState()
     const [meninggal, setMeninggal] = useState()
+    const [global, setGlobal] = useState()
 
     useEffect(() => {
       getPositif();
@@ -19,6 +20,10 @@ const Home = () => {
 
     useEffect(() => {
       getMeninggal();
+    }, [])
+
+    useEffect(() => {
+      getGlobal();
     }, [])
 
     function getPositif() {
@@ -57,7 +62,19 @@ const Home = () => {
           })
     }
 
-    // console.log(meninggal);
+    function getGlobal() {
+        axios
+          .get("https://api.kawalcorona.com/")
+          .then(function (response) {
+            // console.log(response);
+            setGlobal(response.data);
+          })
+          .catch(function (error) {
+            // console.log(error);
+          });
+    }
+
+    console.log(global);
 
     return (
       <Container>
@@ -75,6 +92,42 @@ const Home = () => {
           <Col md={4}>
             {meninggal && (
               <CardComponent data={meninggal} bg="danger" text="white" />
+            )}
+          </Col>
+        </Row>
+
+        <Row className="my-4">
+          <Col md={12}>
+            {global && (
+              <Card>
+                <Card.Body>
+                  <Card.Title>Kasus Covid Global</Card.Title>
+                  <Card.Text>
+                    <Table striped bordered hover>
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Negara</th>
+                          <th>Positif</th>
+                          <th>Sembuh</th>
+                          <th>Meninggal</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {global.map((item, index) => (
+                          <tr>
+                            <td>{index + 1}</td>
+                            <td>{item.attributes.Country_Region}</td>
+                            <td>{item.attributes.Confirmed}</td>
+                            <td>{item.attributes.Recovered}</td>
+                            <td>{item.attributes.Deaths}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </Table>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
             )}
           </Col>
         </Row>
