@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from 'react-bootstrap';
+import CardComponent from '../components/CardComponent';
 
 const Home = () => {
 
@@ -56,45 +57,24 @@ const Home = () => {
           })
     }
 
-    console.log(meninggal);
+    // console.log(meninggal);
 
     return (
       <Container>
         <Row className="my-4">
           <Col md={4}>
             {positif && (
-              <Card>
-                <Card.Body>
-                  <Card.Title>{positif.name}</Card.Title>
-                  <Card.Text>
-                   {positif.value}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+              <CardComponent data={positif} bg="primary" text="white" />
             )}
           </Col>
           <Col md={4}>
             {sembuh && (
-              <Card>
-                <Card.Body>
-                  <Card.Title>{sembuh.name}</Card.Title>
-                  <Card.Text>
-                   {sembuh.value}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+              <CardComponent data={sembuh} bg="success" text="white" />
             )}
           </Col>
           <Col md={4}>
             {meninggal && (
-              <Card>
-                <Card.Body>
-                  <Card.Title>{meninggal.name}</Card.Title>
-                  <Card.Text>
-                   {meninggal.value}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+              <CardComponent data={meninggal} bg="danger" text="white" />
             )}
           </Col>
         </Row>
