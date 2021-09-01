@@ -8,8 +8,8 @@ const CardComponent = (props) => {
     return (
       <Card bg={props.bg} text={props.text} className="shadow text-center">
         <Card.Body>
-          <Card.Title>{props.data.name}</Card.Title>
-          <Card.Text>{props.data.value}</Card.Text>
+          <Card.Title>{props.title}</Card.Title>
+          <Card.Text>{props.body}</Card.Text>
         </Card.Body>
       </Card>
     );

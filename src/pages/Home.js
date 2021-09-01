@@ -74,24 +74,39 @@ const Home = () => {
           });
     }
 
-    console.log(global);
+    // console.log(global);
 
     return (
       <Container>
         <Row className="my-4">
           <Col md={4}>
             {positif && (
-              <CardComponent data={positif} bg="primary" text="white" />
+              <CardComponent
+                title={positif.name}
+                body={positif.value}
+                bg="primary"
+                text="white"
+              />
             )}
           </Col>
           <Col md={4}>
             {sembuh && (
-              <CardComponent data={sembuh} bg="success" text="white" />
+              <CardComponent
+                title={sembuh.name}
+                body={sembuh.value}
+                bg="success"
+                text="white"
+              />
             )}
           </Col>
           <Col md={4}>
             {meninggal && (
-              <CardComponent data={meninggal} bg="danger" text="white" />
+              <CardComponent
+                title={meninggal.name}
+                body={meninggal.value}
+                bg="danger"
+                text="white"
+              />
             )}
           </Col>
         </Row>
